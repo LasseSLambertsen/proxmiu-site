@@ -1,5 +1,7 @@
 # Proxmiu website
 
+Live at **<https://proxmiu.com/>**.
+
 Static presentation page for [Proxmiu](https://github.com/LasseSLambertsen/proxmiu). It is not the app.
 
 ## Deploy on Netlify
@@ -11,9 +13,7 @@ Or import the repository in Netlify with:
 - **Build command:** none
 - **Publish directory:** `.`
 
-`netlify.toml` already sets the publish directory. There are no dependencies and nothing to build.
-
-Once Netlify gives you a URL, update the `og:image` in `index.html` to the final absolute URL.
+`netlify.toml` already sets the publish directory. There are no dependencies and nothing to build. The production site uses the custom domain `proxmiu.com`.
 
 ## Local preview
 
