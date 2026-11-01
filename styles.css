@@ -293,7 +293,6 @@ h1 {
 }
 
 .hero-stage {
-  perspective: 1500px;
   display: flex;
   justify-content: center;
   padding: 38px 0 54px;
@@ -307,8 +306,6 @@ h1 {
   background: linear-gradient(145deg, rgba(30, 33, 44, 0.96), rgba(14, 17, 24, 0.92));
   backdrop-filter: blur(22px) saturate(140%);
   -webkit-backdrop-filter: blur(22px) saturate(140%);
-  transform: rotateX(2deg) rotateY(-4.5deg) rotateZ(-0.8deg);
-  transform-style: preserve-3d;
   box-shadow:
     0 60px 130px -45px rgba(45, 32, 20, 0.65),
     0 0 0 1px rgba(255, 255, 255, 0.08),
@@ -813,14 +810,12 @@ h1 {
   }
 
   .hero-stage {
-    perspective: 1000px;
     padding: 24px 0 34px;
   }
 
   .hero-shot {
     padding: 6px;
     border-radius: 20px;
-    transform: rotateX(1deg) rotateY(-2deg) rotateZ(-0.4deg);
   }
 
   .hero-shot img,
