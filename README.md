@@ -31,3 +31,9 @@ python3 -m http.server 8080
 - `logo.svg`, `favicon.svg` — simplified vector companions for small sizes.
 
 The [MIT license](LICENSE) from Proxmiu applies.
+
+## A small Easter egg
+
+Click the Proxmiu logo five times in quick succession to wake the lynx. Click the mascot to pet it; dismiss it with Escape or its close button. It respects reduced-motion preferences.
+
+With Node.js and Playwright available, run `node tests/lynx.e2e.cjs` to check the interaction. Set `CHROMIUM_PATH` to use a system Chromium installation.
