@@ -27,6 +27,7 @@ python3 -m http.server 8080
 
 - `index.html`, `styles.css`, `app.js` — the page.
 - `screenshots/` — product screenshots pulled from the main repository.
-- `logo.svg`, `favicon.svg`, `apple-touch-icon.png` — branding.
+- `logo.png`, `apple-touch-icon.png` — amber robotic lynx branding.
+- `logo.svg`, `favicon.svg` — simplified vector companions for small sizes.
 
 The [MIT license](LICENSE) from Proxmiu applies.
