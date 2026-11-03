@@ -6,7 +6,7 @@
     <title>Proxmiu — manage Proxmox VE from the browser</title>
     <meta
       name="description"
-      content="A focused workspace for Proxmox VE: guest performance history, notes, pinned machines, saved views, safe bulk actions, browser SSH and one-click dev servers."
+      content="A friendlier Proxmox workspace: snapshots, backups, migration, shared notes, browser SSH and optional AI optimization advice you review and send."
     />
     <meta name="theme-color" content="#f6f0e7" />
     <link rel="canonical" href="https://proxmiu.com/" />
@@ -16,7 +16,7 @@
     <meta property="og:title" content="Proxmiu — manage Proxmox VE from the browser" />
     <meta
       property="og:description"
-      content="Guest history, notes, pins, saved views and safe bulk actions. Browser SSH and ready-to-use AI dev boxes, self-hosted on your LAN."
+      content="Snapshots, backups, migration and shared Proxmox notes. Browser SSH and optional optimization advice, with you in control."
     />
     <meta property="og:image" content="https://proxmiu.com/screenshots/overview.png?v=10" />
     <meta name="twitter:card" content="summary_large_image" />
@@ -48,11 +48,11 @@
 
     <main class="page">
       <section class="hero">
-        <div class="eyebrow"><span class="dot"></span> Proxmox VE, without the tab hunt</div>
-        <h1>Your homelab,<br /><span class="gradient">one click away.</span></h1>
+        <div class="hero-copy">
+        <h1>Your homelab,<br /><span>one click away.</span></h1>
         <p class="lede">
           A focused workspace for Proxmox VE. Understand every guest, keep your important machines close, and handle
-          everyday work in fewer steps. Browser SSH and ready-to-use Claude Code, Codex and OpenCode boxes included.
+          everyday work in fewer steps. Snapshots, backups, migration, browser SSH and ready-to-use dev boxes, together.
         </p>
         <div class="cta">
           <a class="button primary" href="#install">Install on Proxmox</a>
@@ -65,7 +65,14 @@
           <span>Docker</span>
           <span>Community Scripts</span>
         </div>
-        <p class="hero-note">Self-hosted · runs on your LAN · no cloud dependency</p>
+        <p class="hero-note">Self-hosted on your LAN. Optional AI advice when you ask.</p>
+        </div>
+        <aside class="companion-intro" aria-label="Your lynx companion">
+          <div class="companion-portrait" data-lynx-portrait aria-hidden="true"><img src="logo.png" alt="" width="160" height="160" /></div>
+          <p class="companion-hello">A little company<br />for your homelab.</p>
+          <p>Sharp ears. Soft paws. <br />You keep the controls.</p>
+          <button class="button" type="button" data-lynx-wake>Meet your lynx</button>
+        </aside>
       </section>
 
       <section class="hero-stage">
@@ -77,23 +84,35 @@
       <section class="section workspace-feature" aria-labelledby="workspace-title">
         <div class="workspace-story">
           <h2 id="workspace-title">Every guest,<br /> in detail.</h2>
-          <p>Resource history, configuration and your own notes, together in a workspace for each machine.</p>
+          <p>Resource history, configuration and shared notes, together in a workspace for each machine.</p>
           <ul class="workspace-benefits">
-            <li><strong>Keep the context.</strong><span>Pin the machines you reach for first. Notes and pins stay on your agent, ready from your other browsers too.</span></li>
+            <li><strong>Keep the context.</strong><span>Notes use the existing Proxmox description field, so edits appear in Proxmox too. Pins stay on your agent, ready from your other browsers.</span></li>
             <li><strong>Make the inventory yours.</strong><span>Combine status, type and node filters. Save useful views in your browser and export the visible inventory as CSV.</span></li>
             <li><strong>Work on a few at once.</strong><span>Review selected targets, send power requests, and see an outcome for every guest.</span></li>
           </ul>
           <a class="button" href="#screenshots">See it in action</a>
         </div>
         <figure class="workspace-image">
-          <a href="screenshots/guest-detail.png?v=10" target="_blank" rel="noopener" aria-label="Open the full guest workspace screenshot"><img src="screenshots/guest-detail.png?v=10" alt="Proxmiu guest workspace showing performance history, configuration and notes" loading="lazy" width="1440" height="1200" /></a>
-          <figcaption>Real Proxmox history. Your notes. A clearer picture.</figcaption>
+          <a href="screenshots/guest-detail.png?v=11" target="_blank" rel="noopener" aria-label="Open the full guest workspace screenshot"><img src="screenshots/guest-detail.png?v=11" alt="Proxmiu guest workspace showing performance history, configuration and notes" loading="lazy" width="1440" height="1200" /></a>
+          <figcaption>Proxmox history and configuration, with notes shared across both interfaces.</figcaption>
         </figure>
+      </section>
+
+      <section class="section operations-feature" aria-labelledby="operations-title">
+        <div class="section-head">
+          <h2 id="operations-title">Snapshots, backups,<br />and a change of node.</h2>
+          <p>Keep guest maintenance close to the machine. Each operation starts a real Proxmox task, with its progress and final result shown in the workspace.</p>
+        </div>
+        <dl class="operation-list">
+          <div><dt>Save a snapshot</dt><dd>Name a restore point and add a description. Rollback and snapshot deletion require typed confirmation.</dd></div>
+          <div><dt>Start a backup</dt><dd>Choose an available backup storage and follow the Proxmox task through to its result.</dd></div>
+          <div><dt>Move to another node</dt><dd>Choose an available destination in the cluster. Proxmox checks whether the guest can migrate.</dd></div>
+        </dl>
+        <p class="feature-note">Availability depends on your Proxmox permissions, guest configuration and storage. Existing installations may need a role update; Proxmiu never expands permissions automatically.</p>
       </section>
 
       <section id="features" class="section">
         <div class="section-head">
-          <div class="eyebrow">Features</div>
           <h2>Everything you do every day.<br />Nothing you don't.</h2>
           <p>
             Proxmiu is a focused front end, not a replacement for the Proxmox UI. It makes the common things fast and
@@ -146,11 +165,28 @@
         </div>
       </section>
 
+      <section id="advisor" class="section advisor-feature" aria-labelledby="advisor-title">
+        <div class="advisor-story">
+          <img class="advisor-lynx" src="logo.png" alt="The amber robotic lynx" width="64" height="64" loading="lazy" />
+          <h2 id="advisor-title">Advice, with you<br />in control.</h2>
+          <p>Want another look at resource allocation? Add your own OpenAI or Anthropic token for optional optimization advice. The token stays encrypted on your agent.</p>
+          <p>Proxmiu never applies infrastructure changes automatically. Read the advice, decide what fits your lab, and make the changes yourself.</p>
+        </div>
+        <div class="privacy-boundary">
+          <h3>You choose what leaves.</h3>
+          <ol>
+            <li><strong>Preview the metrics.</strong><span>Review the numeric resource preview in Settings before sending anything.</span></li>
+            <li><strong>Send it explicitly.</strong><span>Only your chosen provider receives the reviewed preview when you request advice.</span></li>
+            <li><strong>Keep the context private.</strong><span>The preview includes no names, IP addresses, notes or secrets.</span></li>
+          </ol>
+          <p>AI advice is optional. Your everyday Proxmox workspace works without an AI token.</p>
+        </div>
+      </section>
+
       <section id="screenshots" class="section">
         <div class="section-head">
-          <div class="eyebrow">Screenshots</div>
           <h2>Made to be used.</h2>
-          <p>Warm glass surfaces, light and dark themes, and dense information where it matters.</p>
+          <p>Warm glass surfaces, light and dark themes, and dense information where it matters. Screenshots use synthetic data from the bundled Proxmox mock.</p>
         </div>
         <div class="shots">
           <figure class="shot-wide">
@@ -166,8 +202,12 @@
             <figcaption><strong>Create.</strong> A Claude Code server from a template, with every setting adjustable.</figcaption>
           </figure>
           <figure>
-            <img src="screenshots/settings.png?v=10" alt="Proxmiu settings with the SSH key and self-update" loading="lazy" />
-            <figcaption><strong>Settings and updates.</strong> Your key, access, and opt-in agent updates in one place.</figcaption>
+            <img src="screenshots/settings.png?v=11" alt="Proxmiu Settings with optional AI token configuration and privacy controls" loading="lazy" />
+            <figcaption><strong>Optional AI advice.</strong> Add your provider token, preview anonymous metrics and choose when to request advice.</figcaption>
+          </figure>
+          <figure class="shot-wide">
+            <img src="screenshots/guest-operations.png?v=11" alt="Guest snapshots, backup storage and migration controls with a completed mock Proxmox task" loading="lazy" />
+            <figcaption><strong>Guest operations.</strong> Snapshots, backups and migration, with clear task results. HA-managed guests stay in Proxmox HA controls.</figcaption>
           </figure>
           <figure class="shot-wide">
             <img src="screenshots/command-palette.png?v=10" alt="Proxmiu command palette" loading="lazy" />
@@ -190,7 +230,6 @@
           <img src="screenshots/mobile-overview.png?v=10" alt="Proxmiu on an iPhone: overview" loading="lazy" />
           <img src="screenshots/mobile-guests.png?v=10" alt="Proxmiu on an iPhone: guests" loading="lazy" />
           <div>
-            <div class="eyebrow">On the go</div>
             <h3>The homelab in your pocket.</h3>
             <p>Find hosts, check a container, reboot a VM or open a terminal from a phone. The layout is designed for thumbs, not just a shrunken desktop.</p>
           </div>
@@ -199,7 +238,6 @@
 
       <section id="how" class="section">
         <div class="section-head">
-          <div class="eyebrow">How it works</div>
           <h2>One small agent. Your network stays yours.</h2>
           <p>
             Proxmox sends no CORS headers, and cloud hosts cannot reach a private LAN. So the UI talks to a small agent
@@ -225,8 +263,7 @@
 
       <section id="install" class="section install">
         <div class="section-head">
-          <div class="eyebrow">Install</div>
-          <h2>Three minutes on a Proxmox host.</h2>
+          <h2>Make yourself at home.</h2>
           <p>Run this in the Proxmox shell. It creates an unprivileged container, installs the agent and adds the host to it.</p>
         </div>
         <div class="code-block">
@@ -253,7 +290,6 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
           </span>
           <div>
-            <div class="eyebrow">Security first</div>
             <h2>The UI never touches Proxmox directly.</h2>
             <p>
               Credentials are encrypted at rest, sessions are signed bearer tokens, and the agent refuses to listen

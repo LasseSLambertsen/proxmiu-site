@@ -16,7 +16,7 @@ async function main() {
       return
     }
     response.setHeader('Content-Type', 'text/html')
-    response.end('<header style="position:fixed;top:0;z-index:1"><a class="brand" href="./" data-lynx-trigger>Proxmiu</a></header><main style="height:2400px;padding-top:1700px"><div id="install">Install</div></main><script defer src="/lynx-easter-egg.js"></script>')
+    response.end('<header style="position:fixed;top:0;z-index:1"><a class="brand" href="./" data-lynx-trigger>Proxmiu</a></header><button type="button" data-lynx-wake style="position:fixed;top:50px;z-index:1">Meet your lynx</button><main style="height:2400px;padding-top:1700px"><div id="install">Install</div></main><script defer src="/lynx-easter-egg.js"></script>')
   })
   await new Promise(resolve => server.listen(0, '127.0.0.1', resolve))
   let browser
@@ -31,6 +31,18 @@ async function main() {
     await logo.click()
     await page.waitForTimeout(500)
     if (await page.evaluate(() => scrollY > 0 || location.hash !== '')) issues.push('Home logo must return to the top and clear the section hash')
+    const companion = page.getByRole('button', { name: 'Meet your lynx' })
+    await companion.focus()
+    await page.keyboard.press('Enter')
+    assert.equal(await page.locator('#proxmiu-lynx').count(), 1, 'A visible companion control wakes the lynx with one keyboard action')
+    assert.equal(await companion.getAttribute('aria-expanded'), 'true')
+    assert.ok(await page.getByRole('button', { name: 'Pet the lynx' }).evaluate(element => element === document.activeElement))
+    await page.getByRole('button', { name: 'Dismiss lynx' }).click()
+    assert.equal(await companion.getAttribute('aria-expanded'), 'false')
+    assert.ok(await companion.evaluate(element => element === document.activeElement), 'Direct activation restores companion focus')
+    await companion.click()
+    assert.equal(await page.locator('#proxmiu-lynx').count(), 1, 'A single pointer click also wakes the lynx')
+    await page.keyboard.press('Escape')
     await page.waitForTimeout(1500)
     for (let i = 0; i < 4; i++) await logo.click()
     assert.equal(await page.locator('#proxmiu-lynx').count(), 0)
@@ -69,7 +81,7 @@ async function main() {
     const box = await page.locator('#proxmiu-lynx').boundingBox()
     assert.ok(box.x >= 0 && box.x + box.width <= 390 && box.y >= 0 && box.y + box.height < 844 - 75)
     assert.deepEqual(issues, [])
-    console.log('PASS: activation threshold, idle reset, pet reaction, duplicate prevention, keyboard activation, dismissal, focus return, reduced motion and mobile bounds')
+    console.log('PASS: visible single-click and keyboard activation, focus return, activation threshold, idle reset, pet reaction, duplicate prevention, keyboard activation, dismissal, focus return, reduced motion and mobile bounds')
   } finally {
     if (browser) await browser.close()
     server.close()
