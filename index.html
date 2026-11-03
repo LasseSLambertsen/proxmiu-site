@@ -93,7 +93,7 @@
           <a class="button" href="#screenshots">See it in action</a>
         </div>
         <figure class="workspace-image">
-          <a href="screenshots/guest-detail.png?v=11" target="_blank" rel="noopener" aria-label="Open the full guest workspace screenshot"><img src="screenshots/guest-detail.png?v=11" alt="Proxmiu guest workspace showing performance history, configuration and notes" loading="lazy" width="1440" height="1200" /></a>
+          <a href="screenshots/guest-detail.png?v=12" target="_blank" rel="noopener" aria-label="Open the full guest workspace screenshot"><img src="screenshots/guest-detail.png?v=12" alt="Proxmiu guest workspace showing performance history, configuration and notes" loading="lazy" width="1440" height="1200" /></a>
           <figcaption>Proxmox history and configuration, with notes shared across both interfaces.</figcaption>
         </figure>
       </section>
@@ -101,14 +101,15 @@
       <section class="section operations-feature" aria-labelledby="operations-title">
         <div class="section-head">
           <h2 id="operations-title">Snapshots, backups,<br />and a change of node.</h2>
-          <p>Keep guest maintenance close to the machine. Each operation starts a real Proxmox task, with its progress and final result shown in the workspace.</p>
+          <p>Keep guest maintenance close to the machine. Each operation starts a real Proxmox task, with its status, final result and diagnostic logs shown in the workspace.</p>
         </div>
         <dl class="operation-list">
           <div><dt>Save a snapshot</dt><dd>Name a restore point and add a description. Rollback and snapshot deletion require typed confirmation.</dd></div>
-          <div><dt>Start a backup</dt><dd>Choose an available backup storage and follow the Proxmox task through to its result.</dd></div>
+          <div><dt>Start a backup</dt><dd>Choose an available backup storage, browse this guest’s existing archives, and follow new backup tasks through to their result.</dd></div>
           <div><dt>Move to another node</dt><dd>Choose an available destination in the cluster. Proxmox checks whether the guest can migrate.</dd></div>
         </dl>
         <p class="feature-note">Availability depends on your Proxmox permissions, guest configuration and storage. Existing installations may need a role update; Proxmiu never expands permissions automatically.</p>
+        <p class="feature-note">Fine-tune cores, memory and start-at-boot settings while a guest is stopped. Review the changes first; pending changes and stale configuration checks protect edits made in Proxmox.</p>
       </section>
 
       <section id="features" class="section">
@@ -206,8 +207,12 @@
             <figcaption><strong>Optional AI advice.</strong> Add your provider token, preview anonymous metrics and choose when to request advice.</figcaption>
           </figure>
           <figure class="shot-wide">
-            <img src="screenshots/guest-operations.png?v=11" alt="Guest snapshots, backup storage and migration controls with a completed mock Proxmox task" loading="lazy" />
+            <img src="screenshots/guest-operations.png?v=12" alt="Guest snapshots, backup storage and migration controls with a completed mock Proxmox task" loading="lazy" />
             <figcaption><strong>Guest operations.</strong> Snapshots, backups and migration, with clear task results. HA-managed guests stay in Proxmox HA controls.</figcaption>
+          </figure>
+          <figure class="shot-wide">
+            <img src="screenshots/guest-resources.png?v=12" alt="Stopped guest with reviewed CPU, memory and start-at-boot settings" loading="lazy" />
+            <figcaption><strong>Resource settings.</strong> Adjust stopped-guest allocations with a review step and configuration conflict checks.</figcaption>
           </figure>
           <figure class="shot-wide">
             <img src="screenshots/command-palette.png?v=10" alt="Proxmiu command palette" loading="lazy" />
