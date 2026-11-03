@@ -6,7 +6,7 @@
     <title>Proxmiu — manage Proxmox VE from the browser</title>
     <meta
       name="description"
-      content="A fast, friendly front end for Proxmox VE: power actions, browser SSH, and one-click Claude Code, Codex, OpenCode and Community Scripts guests."
+      content="A focused workspace for Proxmox VE: guest performance history, notes, pinned machines, saved views, safe bulk actions, browser SSH and one-click dev servers."
     />
     <meta name="theme-color" content="#f6f0e7" />
     <link rel="canonical" href="https://proxmiu.com/" />
@@ -16,13 +16,13 @@
     <meta property="og:title" content="Proxmiu — manage Proxmox VE from the browser" />
     <meta
       property="og:description"
-      content="Power actions, browser SSH, and ready-to-use AI dev boxes from templates. Self-hosted on your LAN."
+      content="Guest history, notes, pins, saved views and safe bulk actions. Browser SSH and ready-to-use AI dev boxes, self-hosted on your LAN."
     />
-    <meta property="og:image" content="https://proxmiu.com/screenshots/overview.png?v=9" />
+    <meta property="og:image" content="https://proxmiu.com/screenshots/overview.png?v=10" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Proxmiu — manage Proxmox VE from the browser" />
     <meta name="twitter:description" content="Power actions, browser SSH, and ready-to-use AI dev boxes from templates. Self-hosted on your LAN." />
-    <meta name="twitter:image" content="https://proxmiu.com/screenshots/overview.png?v=9" />
+    <meta name="twitter:image" content="https://proxmiu.com/screenshots/overview.png?v=10" />
     <link rel="icon" type="image/svg+xml" href="favicon.svg?v=lynx-1" />
     <link rel="apple-touch-icon" href="apple-touch-icon.png?v=lynx-1" />
     <link rel="stylesheet" href="styles.css" />
@@ -51,8 +51,8 @@
         <div class="eyebrow"><span class="dot"></span> Proxmox VE, without the tab hunt</div>
         <h1>Your homelab,<br /><span class="gradient">one click away.</span></h1>
         <p class="lede">
-          A fast, friendly front end for Proxmox VE. Start and stop guests, open a terminal in the browser, and turn
-          templates into ready-to-use Claude Code, Codex or OpenCode boxes — all from one place.
+          A focused workspace for Proxmox VE. Understand every guest, keep your important machines close, and handle
+          everyday work in fewer steps. Browser SSH and ready-to-use Claude Code, Codex and OpenCode boxes included.
         </p>
         <div class="cta">
           <a class="button primary" href="#install">Install on Proxmox</a>
@@ -70,8 +70,25 @@
 
       <section class="hero-stage">
         <div class="hero-shot">
-          <img src="screenshots/overview.png?v=9" alt="Proxmiu overview showing nodes, guests and live resource usage" />
+          <img src="screenshots/overview.png?v=10" alt="Proxmiu overview showing nodes, guests and live resource usage" />
         </div>
+      </section>
+
+      <section class="section workspace-feature" aria-labelledby="workspace-title">
+        <div class="workspace-story">
+          <h2 id="workspace-title">Every guest,<br /> in detail.</h2>
+          <p>Resource history, configuration and your own notes, together in a workspace for each machine.</p>
+          <ul class="workspace-benefits">
+            <li><strong>Keep the context.</strong><span>Pin the machines you reach for first. Notes and pins stay on your agent, ready from your other browsers too.</span></li>
+            <li><strong>Make the inventory yours.</strong><span>Combine status, type and node filters. Save useful views in your browser and export the visible inventory as CSV.</span></li>
+            <li><strong>Work on a few at once.</strong><span>Review selected targets, send power requests, and see an outcome for every guest.</span></li>
+          </ul>
+          <a class="button" href="#screenshots">See it in action</a>
+        </div>
+        <figure class="workspace-image">
+          <a href="screenshots/guest-detail.png?v=10" target="_blank" rel="noopener" aria-label="Open the full guest workspace screenshot"><img src="screenshots/guest-detail.png?v=10" alt="Proxmiu guest workspace showing performance history, configuration and notes" loading="lazy" width="1440" height="1200" /></a>
+          <figcaption>Real Proxmox history. Your notes. A clearer picture.</figcaption>
+        </figure>
       </section>
 
       <section id="features" class="section">
@@ -89,7 +106,7 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2v10" /><path d="M18.36 6.64a9 9 0 1 1-12.73 0" /></svg>
             </span>
             <h3>Power actions</h3>
-            <p>Start, shut down, reboot, force stop or delete a guest. Reboot or shut down a node with typed confirmation.</p>
+            <p>Start, shut down or reboot selected guests with individual results. Keep one-click actions for each machine and typed confirmation for destructive operations.</p>
           </article>
           <article class="card">
             <span class="icon">
@@ -137,37 +154,41 @@
         </div>
         <div class="shots">
           <figure class="shot-wide">
-            <img src="screenshots/guests.png?v=9" alt="Guest list with live status, addresses and actions" loading="lazy" />
-            <figcaption><strong>Guests.</strong> Live status, addresses and usage with one-click SSH, reboot and more.</figcaption>
+            <img src="screenshots/guests.png?v=10" alt="Guest list with live status, addresses and actions" loading="lazy" />
+            <figcaption><strong>Your inventory.</strong> Saved views, independent filters, pins and CSV export, with live status and quick actions.</figcaption>
           </figure>
           <figure>
-            <img src="screenshots/create.png?v=9" alt="Creating a Claude Code server from a template" loading="lazy" />
+            <img src="screenshots/bulk-actions.png?v=10" alt="Reviewed bulk power requests with an individual result for each selected guest" loading="lazy" />
+            <figcaption><strong>Clear outcomes.</strong> Review the targets before sending a batch, then see which requests were sent, failed or skipped.</figcaption>
+          </figure>
+          <figure>
+            <img src="screenshots/create.png?v=10" alt="Creating a Claude Code server from a template" loading="lazy" />
             <figcaption><strong>Create.</strong> A Claude Code server from a template, with every setting adjustable.</figcaption>
           </figure>
           <figure>
-            <img src="screenshots/settings.png?v=9" alt="Proxmiu settings with the SSH key and self-update" loading="lazy" />
+            <img src="screenshots/settings.png?v=10" alt="Proxmiu settings with the SSH key and self-update" loading="lazy" />
             <figcaption><strong>Settings and updates.</strong> Your key, access, and opt-in agent updates in one place.</figcaption>
           </figure>
           <figure class="shot-wide">
-            <img src="screenshots/command-palette.png?v=9" alt="Proxmiu command palette" loading="lazy" />
+            <img src="screenshots/command-palette.png?v=10" alt="Proxmiu command palette" loading="lazy" />
             <figcaption><strong>Command palette.</strong> Jump to any guest, template or page without leaving the keyboard.</figcaption>
           </figure>
           <figure>
-            <img src="screenshots/templates.png?v=9" alt="Proxmiu template gallery" loading="lazy" />
+            <img src="screenshots/templates.png?v=10" alt="Proxmiu template gallery" loading="lazy" />
             <figcaption><strong>Templates.</strong> Built-in AI boxes, custom recipes and Community Scripts.</figcaption>
           </figure>
           <figure>
-            <img src="screenshots/connections.png?v=9" alt="Proxmiu connections and host discovery" loading="lazy" />
+            <img src="screenshots/connections.png?v=10" alt="Proxmiu connections and host discovery" loading="lazy" />
             <figcaption><strong>Connections.</strong> Find Proxmox hosts on your LAN and keep them together.</figcaption>
           </figure>
           <figure class="shot-wide">
-            <img src="screenshots/overview-light.png?v=9" alt="Proxmiu overview in light mode" loading="lazy" />
+            <img src="screenshots/overview-light.png?v=10" alt="Proxmiu overview in light mode" loading="lazy" />
             <figcaption><strong>Light mode.</strong> The same glass language, brightened for daylight.</figcaption>
           </figure>
         </div>
         <div class="mobile-showcase">
-          <img src="screenshots/mobile-overview.png?v=9" alt="Proxmiu on an iPhone: overview" loading="lazy" />
-          <img src="screenshots/mobile-guests.png?v=9" alt="Proxmiu on an iPhone: guests" loading="lazy" />
+          <img src="screenshots/mobile-overview.png?v=10" alt="Proxmiu on an iPhone: overview" loading="lazy" />
+          <img src="screenshots/mobile-guests.png?v=10" alt="Proxmiu on an iPhone: guests" loading="lazy" />
           <div>
             <div class="eyebrow">On the go</div>
             <h3>The homelab in your pocket.</h3>

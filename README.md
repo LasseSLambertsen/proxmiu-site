@@ -27,6 +27,7 @@ python3 -m http.server 8080
 
 - `index.html`, `styles.css`, `app.js` — the page.
 - `screenshots/` — product screenshots pulled from the main repository.
+- Guest workspaces include Proxmox history and agent-persisted notes/pins; saved inventory views stay in each browser. Bulk requests have reviewed targets and individual outcomes.
 - `logo.png`, `apple-touch-icon.png` — amber robotic lynx branding.
 - `logo.svg`, `favicon.svg` — simplified vector companions for small sizes.
 
