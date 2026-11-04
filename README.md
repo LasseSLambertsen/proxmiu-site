@@ -41,6 +41,8 @@ The hero features the same amber robotic lynx as the app. Choose **Meet your lyn
 
 With Node.js and Playwright available, run `node tests/lynx.e2e.cjs` to check the interaction and `node tests/presentation.e2e.cjs` for actual desktop/390px page checks, loaded images and feature/privacy copy. Set `CHROMIUM_PATH` to use a system Chromium installation. Presentation captures are written to `/tmp/proxmiu-site-*.png`.
 
+The app also offers an explicit **Plan a new guest** chat mode. Lynx suggests a built-in template and CPU/memory/disk values from public presets; no custom scripts, infrastructure data, destinations or credentials are sent in this mode. **Review in Create** validates the current template and opens a one-use memory draft in the normal creation form. Users review normal placement/network/access defaults and explicitly create the guest; the chat never provisions automatically.
+
 Current guest workspace, operations and Settings screenshots were captured through the real local agent and bundled synthetic Proxmox mock (`scripts/capture-advanced.cjs` in the app repository). They do not show a real host; AI was unconfigured and no provider was contacted.
 
 Guest maintenance also covers reviewed CPU/memory/start-at-boot edits for stopped guests, existing-backup browsing by storage, and paged diagnostics for Proxmiu-started tasks. Conflicting or pending configuration changes remain explicit.
