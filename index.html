@@ -110,6 +110,7 @@
         </dl>
         <p class="feature-note">Availability depends on your Proxmox permissions, guest configuration and storage. Existing installations may need a role update; Proxmiu never expands permissions automatically.</p>
         <p class="feature-note">Fine-tune cores, memory and start-at-boot settings while a guest is stopped. Review the changes first; pending changes and stale configuration checks protect edits made in Proxmox.</p>
+        <p class="feature-note">See what happened in Proxmox task history: choose a node or guest, inspect results and reopen retained logs after an agent restart. Provisioning runs remain separate, and history follows Proxmox retention and permissions.</p>
       </section>
 
       <section id="features" class="section">
@@ -213,6 +214,10 @@
           <figure class="shot-wide">
             <img src="screenshots/guest-resources.png?v=12" alt="Stopped guest with reviewed CPU, memory and start-at-boot settings" loading="lazy" />
             <figcaption><strong>Resource settings.</strong> Adjust stopped-guest allocations with a review step and configuration conflict checks.</figcaption>
+          </figure>
+          <figure class="shot-wide">
+            <img src="screenshots/task-history.png?v=1" alt="Native Proxmox task history with node and guest filters, retained outcomes and log inspection" loading="lazy" />
+            <figcaption><strong>Native task history.</strong> Inspect retained Proxmox operations and reopen their logs after an agent restart.</figcaption>
           </figure>
           <figure class="shot-wide">
             <img src="screenshots/command-palette.png?v=10" alt="Proxmiu command palette" loading="lazy" />
