@@ -44,3 +44,5 @@ With Node.js and Playwright available, run `node tests/lynx.e2e.cjs` to check th
 Current guest workspace, operations and Settings screenshots were captured through the real local agent and bundled synthetic Proxmox mock (`scripts/capture-advanced.cjs` in the app repository). They do not show a real host; AI was unconfigured and no provider was contacted.
 
 Guest maintenance also covers reviewed CPU/memory/start-at-boot edits for stopped guests, existing-backup browsing by storage, and paged diagnostics for Proxmiu-started tasks. Conflicting or pending configuration changes remain explicit.
+
+Native Proxmox task history appears in Activity and guest workspaces, with connection/node selection, optional guest filtering, bounded paging and result/log inspection. History can reopen tasks after agent restarts, subject to Proxmox retention and permissions. Local provisioning jobs remain a separate process-local view.
