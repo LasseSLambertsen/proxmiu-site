@@ -29,7 +29,7 @@ python3 -m http.server 8080
 - `screenshots/` — product screenshots pulled from the main repository.
 - Guest workspaces include Proxmox history, shared notes in the existing Proxmox description field, and agent-persisted pins. Saved inventory views stay in each browser. Bulk requests have reviewed targets and individual outcomes.
 - Snapshots, backups and migration start real Proxmox tasks and display their final results. Availability depends on the guest, storage and API role; existing agents may need their Proxmox role updated.
-- Optional OpenAI/Anthropic optimization advice uses an encrypted token on the agent. Users preview numeric resource data and explicitly request a review. The preview excludes names, IP addresses, notes and secrets, and advice never triggers automatic infrastructure changes.
+- Optional OpenAI/Anthropic/OpenRouter optimization advice uses an encrypted token on the agent. Users preview numeric resource data and explicitly request a review. The preview excludes names, IP addresses, notes and secrets, and advice never triggers automatic infrastructure changes.
 - `logo.png`, `apple-touch-icon.png` — amber robotic lynx branding.
 - `logo.svg`, `favicon.svg` — simplified vector companions for small sizes.
 
@@ -37,7 +37,7 @@ The [MIT license](LICENSE) from Proxmiu applies.
 
 ## Your lynx companion
 
-The hero features the same amber robotic lynx as the app. Choose **Meet your lynx** to wake the companion with a click or the keyboard. Five quick clicks on the Proxmiu logo still work as an Easter egg. Click the mascot to pet it; dismiss it with Escape or its close button. Focus returns to the control that opened it, and it respects reduced-motion preferences. The companion is decorative and does not monitor or operate infrastructure.
+The hero features the same amber robotic lynx as the app. Choose **Meet your lynx** to wake the companion with a click or the keyboard. Five quick clicks on the Proxmiu logo still work as an Easter egg. Click the mascot to pet it; dismiss it with Escape or its close button. Focus returns to the control that opened it, and it respects reduced-motion preferences. On this presentation site the companion is decorative. In the app, a saved OpenAI, Anthropic or OpenRouter API key makes the same controls open a Lynx chat assistant. Messages are sent explicitly to the configured provider; no inventory, notes or logs are attached automatically, and chat never operates infrastructure.
 
 With Node.js and Playwright available, run `node tests/lynx.e2e.cjs` to check the interaction and `node tests/presentation.e2e.cjs` for actual desktop/390px page checks, loaded images and feature/privacy copy. Set `CHROMIUM_PATH` to use a system Chromium installation. Presentation captures are written to `/tmp/proxmiu-site-*.png`.
 

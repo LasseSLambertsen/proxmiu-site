@@ -40,13 +40,15 @@ async function main() {
       assert.equal(await page.locator('#proxmiu-lynx').count(), 1)
       await page.keyboard.press('Escape')
       assert.ok(await meet.evaluate(element => element === document.activeElement))
-      for (const heading of ['Snapshots, backups, and a change of node.', 'Advice, with you in control.']) {
+      for (const heading of ['Snapshots, backups, and a change of node.', 'Chat with Lynx. Keep the controls.']) {
         assert.ok(await page.getByRole('heading', { name: heading }).isVisible())
       }
       const copy = await page.locator('main').textContent()
       assert.match(copy, /Proxmox description field/)
       assert.match(copy, /names, IP addresses, notes or secrets/i)
       assert.match(copy, /encrypted on your agent/)
+      assert.match(copy, /OpenRouter/)
+      assert.match(copy, /Chat messages go to your configured provider/)
       assert.match(copy, /never applies infrastructure changes automatically/)
       assert.match(copy, /Proxmox task/)
       await page.locator('img').evaluateAll(images => images.forEach(image => { image.loading = 'eager' }))
