@@ -6,7 +6,7 @@ const path = require('node:path')
 const assert = require('node:assert/strict')
 
 async function main() {
-  const root = path.resolve(__dirname, '..')
+  const root = process.env.SITE_ROOT ? path.resolve(process.env.SITE_ROOT) : path.resolve(__dirname, '..')
   const types = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/css', '.png': 'image/png', '.svg': 'image/svg+xml' }
   const server = http.createServer((request, response) => {
     const requested = decodeURIComponent(new URL(request.url, 'http://localhost').pathname)
@@ -31,6 +31,10 @@ async function main() {
       await page.setViewportSize({ width, height: width === 390 ? 844 : 1000 })
       await page.goto(origin)
       await page.emulateMedia({ reducedMotion: 'reduce' })
+      const demo = page.getByRole('link', { name: 'Try the demo', exact: true })
+      assert.ok(await demo.isVisible())
+      assert.equal(await demo.getAttribute('href'), '/demo/')
+      assert.match(await page.locator('main').textContent(), /read-only demo with sample data/)
       const meet = page.getByRole('button', { name: 'Meet your lynx', exact: true })
       assert.equal(await meet.count(), 1, 'A visible hero control makes the companion discoverable')
       assert.ok(await meet.isVisible())
