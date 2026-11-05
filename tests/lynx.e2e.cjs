@@ -6,7 +6,7 @@ const path = require('node:path')
 const assert = require('node:assert/strict')
 
 async function main() {
-  const root = path.resolve(__dirname, '..')
+  const root = process.env.SITE_ROOT ? path.resolve(process.env.SITE_ROOT) : path.resolve(__dirname, '..')
   const asset = [path.join(root, 'lynx-easter-egg.js'), path.join(root, 'public/lynx-easter-egg.js')].find(fs.existsSync)
   assert.ok(asset, 'Lynx script must exist')
   const server = http.createServer((request, response) => {

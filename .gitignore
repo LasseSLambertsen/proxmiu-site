@@ -5,3 +5,6 @@ _site/
 chrome-*/
 preview-*.png
 *.log
+dist/
+.site-stage-*/
+.site-backup-*/
