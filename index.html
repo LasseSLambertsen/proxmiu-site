@@ -114,6 +114,7 @@
         <p class="feature-note">Fine-tune cores, memory and start-at-boot settings while a guest is stopped. Review the changes first; pending changes and stale configuration checks protect edits made in Proxmox.</p>
         <p class="feature-note">See what happened in Proxmox task history: choose a node or guest, inspect results and reopen retained logs after an agent restart. Provisioning runs remain separate, and history follows Proxmox retention and permissions.</p>
         <p class="feature-note">Keep the setup record. Provisioning and template-update history survives agent restarts in an encrypted local journal. Interrupted runs retain their last saved steps and diagnostic tail; inspect the guest before starting again. Proxmiu never resumes setup commands automatically.</p>
+        <p class="feature-note">Reach a running guest through its native Proxmox console, even before its network is ready. LXC consoles and configured VM serial sockets use an explicit Connect action; guest login may be required. Update the agent and grant VM.Console on the intended guests. Tickets stay on the agent, and console output is not automatically shared with Lynx.</p>
       </section>
 
       <section id="features" class="section">
