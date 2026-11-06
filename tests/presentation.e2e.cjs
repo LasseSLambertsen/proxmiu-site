@@ -67,6 +67,8 @@ async function main() {
       assert.match(copy, /native Proxmox console/)
       assert.match(copy, /configured VM serial sockets/)
       assert.match(copy, /grant VM.Console on the intended guests/)
+      assert.match(copy, /Rotate saved credentials/)
+      assert.match(copy, /destination stays fixed and existing secrets stay on the agent/)
       await page.locator('img').evaluateAll(images => images.forEach(image => { image.loading = 'eager' }))
       await page.locator('footer').scrollIntoViewIfNeeded()
       await page.waitForFunction(() => [...document.images].filter(image => !image.complete).length === 0)
