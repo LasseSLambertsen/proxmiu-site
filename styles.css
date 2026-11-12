@@ -677,6 +677,9 @@ h1 {
   line-height: 1.65;
 }
 
+#roadmap > .feature-note { margin-top: 18px; }
+#roadmap .steps article > span { color: var(--muted); }
+
 .install {
   padding-bottom: 8px;
 }
