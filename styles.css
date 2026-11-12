@@ -678,6 +678,7 @@ h1 {
 }
 
 #roadmap > .feature-note { margin-top: 18px; }
+#roadmap .steps article > span { color: var(--muted); }
 
 .install {
   padding-bottom: 8px;

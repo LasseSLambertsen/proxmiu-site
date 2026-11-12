@@ -74,6 +74,31 @@ async function main() {
       const roadmap = page.getByRole('region', { name: 'A broader workspace, in stages.' })
       assert.ok(await roadmap.isVisible())
       assert.equal(await roadmap.locator('article').count(), 3)
+      const labels = roadmap.locator('.steps article > span')
+      const foregrounds = await labels.evaluateAll(elements => elements.map(element => getComputedStyle(element).color))
+      for (const [index, label] of (await labels.all()).entries()) {
+        const foreground = foregrounds[index]
+        // Sample the actual glass/gradient background with only the label ink hidden.
+        const background = await label.screenshot({ style: '#roadmap .steps article > span { color: transparent; } header { visibility: hidden; }' })
+        const contrast = await page.evaluate(async ({ foreground, background }) => {
+          const image = new Image()
+          image.src = `data:image/png;base64,${background}`
+          await image.decode()
+          const canvas = document.createElement('canvas')
+          canvas.width = image.width; canvas.height = image.height
+          const context = canvas.getContext('2d')
+          context.drawImage(image, 0, 0)
+          const backdrop = [...context.getImageData(Math.floor(image.width / 2), Math.floor(image.height / 2), 1, 1).data].slice(0, 3)
+          const ink = foreground.match(/[\d.]+/g).map(Number)
+          const alpha = ink[3] ?? 1
+          const composite = ink.slice(0, 3).map((channel, index) => channel * alpha + backdrop[index] * (1 - alpha))
+          const luminance = rgb => rgb.map(channel => channel / 255).map(channel => channel <= 0.04045 ? channel / 12.92 : ((channel + 0.055) / 1.055) ** 2.4).reduce((sum, channel, index) => sum + channel * [0.2126, 0.7152, 0.0722][index], 0)
+          const values = [luminance(composite), luminance(backdrop)].sort((a, b) => a - b)
+          return (values[1] + 0.05) / (values[0] + 0.05)
+        }, { foreground, background: background.toString('base64') })
+        assert.ok(contrast >= 4.5, `${await label.textContent()} label at ${width}px needs AA contrast >= 4.5:1; measured ${contrast.toFixed(2)}:1 (${foreground})`)
+        console.log(`PASS: ${width}px roadmap label "${await label.textContent()}" contrast ${contrast.toFixed(2)}:1`)
+      }
       const available = await roadmap.locator('article').nth(0).textContent()
       const planned = await roadmap.locator('article').nth(1).textContent()
       const later = await roadmap.locator('article').nth(2).textContent()
