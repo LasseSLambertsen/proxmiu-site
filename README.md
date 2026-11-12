@@ -4,6 +4,8 @@ Live at **<https://proxmiu.com/>**.
 
 Presentation website for [Proxmiu](https://github.com/LasseSLambertsen/proxmiu), with an isolated read-only tour at `/demo/`. The real app and agent run on your network.
 
+Proxmiu is evolving toward a full replacement for the Proxmox VE web interface in stages. The page distinguishes implemented daily guest operations from planned graphical consoles, broader hardware editing, host storage/network/firewall controls, cluster management, backup administration, accounts/permissions, audit history and notifications. These are roadmap goals without promised release dates; full replacement and production readiness are not established. Verification uses synthetic fixtures first, with live Proxmox VE 8/9 and PBS checks pending on designated disposable infrastructure.
+
 ## Deploy on Netlify
 
 [![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/LasseSLambertsen/proxmiu-site)
@@ -35,6 +37,7 @@ The demo uses fixed synthetic data, hash navigation and bundled app design compo
 - `screenshots/` — product screenshots pulled from the main repository.
 - Guest workspaces include Proxmox history, shared notes in the existing Proxmox description field, and agent-persisted pins. Saved inventory views stay in each browser. Bulk requests have reviewed targets and individual outcomes.
 - Snapshots, backups and migration start real Proxmox tasks and display their final results. Availability depends on the guest, storage and API role; existing agents may need their Proxmox role updated.
+- Backup restore is implemented in app merge `acd5fc098b8a41eda632bbfb54494b0990d8d295` (PR #21). It restores a listed VM VMA/PBS or ordinary unprivileged LXC TAR/PBS archive on the same node into a new, unused guest ID. A reviewed five-minute single-use plan and typed destination ID precede submission. The source is retained; `force=0`, `unique=1`, `start=0` and `onboot=0` keep the destination distinct and stopped. The actual task belongs to the new ID, with native task-history recovery. Unsupported host dependencies are blocked. Live Proxmox VE 8/9 and PBS validation remains pending on designated disposable infrastructure; this is not a production-readiness claim.
 - Optional OpenAI/Anthropic/OpenRouter optimization advice uses an encrypted token on the agent. Users preview numeric resource data and explicitly request a review. The preview excludes names, IP addresses, notes and secrets, and advice never triggers automatic infrastructure changes.
 - `logo.png`, `apple-touch-icon.png` — amber robotic lynx branding.
 - `logo.svg`, `favicon.svg` — simplified vector companions for small sizes.
@@ -45,7 +48,7 @@ The [MIT license](LICENSE) from Proxmiu applies.
 
 The hero features the same amber robotic lynx as the app. Choose **Meet your lynx** to wake the companion with a click or the keyboard. Five quick clicks on the Proxmiu logo still work as an Easter egg. Click the mascot to pet it; dismiss it with Escape or its close button. Focus returns to the control that opened it, and it respects reduced-motion preferences. On this presentation site the companion is decorative. In the app, a saved OpenAI, Anthropic or OpenRouter API key opens Lynx chat. Messages go to the configured provider when sent. Selected-guest setup help requires preview and consent before sharing settings and available recent usage; names, addresses, notes, logs and secrets stay out of that snapshot. Lynx can propose supported CPU, memory and boot settings, with before/after review and explicit confirmation through the existing stopped-guest editor. It never stops guests or applies changes automatically.
 
-With Node.js and Playwright available, run `node tests/lynx.e2e.cjs` to check the interaction and `node tests/presentation.e2e.cjs` for actual desktop/390px page checks, loaded images and feature/privacy copy. Set `CHROMIUM_PATH` to use a system Chromium installation and `SITE_ROOT=dist` to check the staged publish output. Presentation captures are written to `/tmp/proxmiu-site-*.png`.
+With Node.js and Playwright available, run `node tests/lynx.e2e.cjs` to check the interaction and `node tests/presentation.e2e.cjs` for actual desktop/390px page checks, loaded images, feature/privacy copy, restore limits and the implemented/planned roadmap distinction. Set `CHROMIUM_PATH` to use a system Chromium installation and `SITE_ROOT=dist` to check the staged publish output. Presentation captures, including the staged roadmap, are written to `/tmp/proxmiu-site-*.png`.
 
 The app also offers an explicit **Plan a new guest** chat mode. Lynx suggests a built-in template and CPU/memory/disk values from public presets; no custom scripts, infrastructure data, destinations or credentials are sent in this mode. **Review in Create** validates the current template and opens a one-use memory draft in the normal creation form. Users review normal placement/network/access defaults and explicitly create the guest; the chat never provisions automatically.
 

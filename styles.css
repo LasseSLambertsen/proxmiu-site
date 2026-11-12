@@ -677,6 +677,8 @@ h1 {
   line-height: 1.65;
 }
 
+#roadmap > .feature-note { margin-top: 18px; }
+
 .install {
   padding-bottom: 8px;
 }

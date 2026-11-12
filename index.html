@@ -110,6 +110,7 @@
           <div><dt>Start a backup</dt><dd>Choose an available backup storage, browse this guest’s existing archives, and follow new backup tasks through to their result.</dd></div>
           <div><dt>Move to another node</dt><dd>Choose an available destination in the cluster. Proxmox checks whether the guest can migrate.</dd></div>
         </dl>
+        <p class="feature-note">Restore to a new guest. Choose a listed VM VMA/PBS backup or an ordinary unprivileged LXC TAR/PBS backup and an unused guest ID on the same node. Review a five-minute, single-use plan and type the new ID to confirm. The source stays intact; the restored guest stays stopped with start-at-boot disabled. Unsupported host dependencies are blocked. Follow the actual restore task and reopen retained results from native Proxmox history.</p>
         <p class="feature-note">Availability depends on your Proxmox permissions, guest configuration and storage. Existing installations may need a role update; Proxmiu never expands permissions automatically.</p>
         <p class="feature-note">Fine-tune cores, memory and start-at-boot settings while a guest is stopped. Review the changes first; pending changes and stale configuration checks protect edits made in Proxmox.</p>
         <p class="feature-note">See what happened in Proxmox task history: choose a node or guest, inspect results and reopen retained logs after an agent restart. Provisioning runs remain separate, and history follows Proxmox retention and permissions.</p>
@@ -121,10 +122,10 @@
 
       <section id="features" class="section">
         <div class="section-head">
-          <h2>Everything you do every day.<br />Nothing you don't.</h2>
+          <h2>Everyday work.<br />Room to grow.</h2>
           <p>
-            Proxmiu is a focused front end, not a replacement for the Proxmox UI. It makes the common things fast and
-            leaves cluster administration where it belongs.
+            Proxmiu is growing toward a full replacement for the Proxmox VE web interface, one reviewed capability at
+            a time. Today’s app brings guest work, creation and maintenance into a workspace built for your homelab.
           </p>
         </div>
         <div class="cards">
@@ -171,6 +172,19 @@
             <p>Bottom navigation, touch-friendly actions and a terminal key bar. Check the homelab from the couch.</p>
           </article>
         </div>
+      </section>
+
+      <section id="roadmap" class="section" aria-labelledby="roadmap-title">
+        <div class="section-head">
+          <h2 id="roadmap-title">A broader workspace,<br />in stages.</h2>
+          <p>The destination is full Proxmox VE administration. The app covers the work below today; the remaining stages are planned, with no promised release dates.</p>
+        </div>
+        <div class="steps">
+          <article><span>Available now</span><h3>Daily guest work</h3><p>Inventory, notes, power actions, templates, SSH and native text consoles. Reviewed resource edits, snapshots, backups, migration and backup restore to a new guest, with task history and opt-in host updates.</p></article>
+          <article><span>Planned</span><h3>Deeper guest controls</h3><p>Graphical consoles and broader hardware editing: disks, network devices, media and boot configuration. Each addition needs clear previews, permission checks and recoverable task results.</p></article>
+          <article><span>Planned</span><h3>Broader administration</h3><p>Host storage, network and firewall controls; cluster management; backup administration; accounts and permissions; audit history and notifications. These extend beyond today’s guest operations.</p></article>
+        </div>
+        <p class="feature-note">Progress is verified with synthetic fixtures first. Backup restore is implemented; live Proxmox VE 8/9 and PBS validation remains pending on designated disposable infrastructure. This is an evolving replacement, and production readiness has not been established.</p>
       </section>
 
       <section id="advisor" class="section advisor-feature" aria-labelledby="advisor-title">
